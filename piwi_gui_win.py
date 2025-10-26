@@ -1,9 +1,9 @@
 # -*- coding: utf-8 -*-
-"""
+r"""
 Piwi – Interface principale (WSL + élévation à la demande)
 
 - Vérifie WSL + distro "PiwiUbuntu".
-- Auto-réparation : tente d'importer la distro depuis {app}\wsl\*.rootfs.tar.gz
+- Auto-réparation : tente d'importer la distro depuis {app}\\wsl\\*.rootfs.tar.gz
   et lance setup_piwi.sh en root WSL si la distro manque.
 - Si non prête après ça : lance l’installateur et s’arrête.
 - UI minimaliste : clé OpenAI, requête, mot de passe sudo (optionnel), mode root (bandeau visible).
@@ -174,8 +174,8 @@ def to_wsl_path(win_path: str) -> str:
 # ---------- Auto-réparation au démarrage ----------
 
 def try_auto_repair():
-    """
-    Si la distro n'existe pas, tente un import depuis {app}\wsl\*.rootfs.tar.gz,
+    r"""
+    Si la distro n'existe pas, tente un import depuis {app}\\wsl\\*.rootfs.tar.gz,
     puis exécute setup_piwi.sh en root dans WSL. Silencieux et idempotent.
     """
     # Déjà présente ? on sort
@@ -337,10 +337,10 @@ class MainWindow(QMainWindow):
 
         bash_fragment = (
             f'{env_exports}'
-            f'REQDIR="{reqdir_wsl}"; '
-            f'mkdir -p "$REQDIR"; '
-            f'cd {shlex.quote(base_dir_wsl)} || exit 2; '
-            f'python3 noyau.py {shlex.quote(instruction)} "$REQDIR"'
+            f' REQDIR="{reqdir_wsl}"; '
+            f' mkdir -p "$REQDIR"; '
+            f' cd {shlex.quote(base_dir_wsl)} || exit 2; '
+            f' python3 noyau.py {shlex.quote(instruction)} "$REQDIR"'
         )
         if as_root:
             cmd_list = wsl_bash(bash_fragment, user="root")

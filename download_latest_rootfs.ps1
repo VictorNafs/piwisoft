@@ -1,29 +1,44 @@
-param (
-  [string]$Codename = "jammy",
-  [string]$OutputFolder = ".\wsl"
+# download_latest_rootfs.ps1
+# Downloads RootFS & checksum from GitHub Releases, verifies SHA256, and places them under .\wsl\
+param(
+  [string]$RepoBaseUrl = "https://github.com/VictorNafs/rootfs-helper/releases/download/rootfs-stable",
+  [string]$OutDir = ".\wsl",
+  [string]$RootfsName = "ubuntu-jammy-wsl-amd64-ubuntu22.04lts.rootfs.tar.gz",
+  [string]$ShaName = "piwi-rootfs.sha256"
 )
 
 $ErrorActionPreference = "Stop"
 $ProgressPreference = "SilentlyContinue"
 
-$Filename = "ubuntu-$Codename-wsl-amd64-wsl.rootfs.tar.gz"
-$BaseUrl  = "https://cloud-images.ubuntu.com/wsl/releases/$Codename/current"
-$OutPath  = Join-Path $OutputFolder $Filename
-$Url      = "$BaseUrl/$Filename"
-
-if (-not (Test-Path -LiteralPath $OutputFolder)) {
-  New-Item -ItemType Directory -Path $OutputFolder | Out-Null
+if (-not (Test-Path -LiteralPath $OutDir)) {
+  New-Item -ItemType Directory -Path $OutDir | Out-Null
 }
 
-if ($PSVersionTable.PSVersion.Major -lt 6) {
-  try { [Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12 } catch {}
+$rootfsUrl = "$RepoBaseUrl/$RootfsName"
+$shaUrl    = "$RepoBaseUrl/$ShaName"
+$rootfsOut = Join-Path $OutDir $RootfsName
+$shaOut    = Join-Path $OutDir $ShaName
+
+Write-Host "[DL] RootFS: $rootfsUrl"
+Invoke-WebRequest -Uri $rootfsUrl -OutFile $rootfsOut
+
+Write-Host "[DL] SHA256: $shaUrl"
+Invoke-WebRequest -Uri $shaUrl -OutFile $shaOut
+
+# Read expected sha256 (supports either 'hex  filename' or just hex on first line)
+$shaText = Get-Content -LiteralPath $shaOut -Raw
+$expected = ($shaText -split '\s+')[0].ToUpperInvariant()
+
+Write-Host "[CHK] Verifying SHA256..."
+$actual = (Get-FileHash -LiteralPath $rootfsOut -Algorithm SHA256).Hash.ToUpperInvariant()
+
+if ($expected -ne $actual) {
+  Write-Host "[ERR] SHA256 mismatch!"
+  Write-Host "      expected: $expected"
+  Write-Host "      actual  : $actual"
+  Remove-Item -LiteralPath $rootfsOut -Force -ErrorAction SilentlyContinue
+  exit 1
 }
 
-Invoke-WebRequest -Uri $Url -OutFile $OutPath
-
-if (-not (Test-Path -LiteralPath $OutPath)) {
-  throw "Download failed: $OutPath"
-}
-
-# IMPORTANT: print ONLY the filename for the .bat FOR /F capture
-[Console]::Out.Write($Filename)
+Write-Host "[OK] RootFS verified."
+exit 0
