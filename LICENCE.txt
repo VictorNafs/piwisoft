@@ -1,0 +1,85 @@
+🧾 Licence d’utilisation – Piwi
+
+© 2025 Victor DUPREZ / PiwiSoft
+Tous droits réservés.
+(French version – see English version below)
+
+Article 1 – Objet
+
+Le logiciel Piwi et l’ensemble de ses composants (code source, interface graphique, scripts, documentation, ressources visuelles, logos et icônes) sont la propriété exclusive de son auteur, Victor DUPREZ.
+
+Article 2 – Interdictions
+
+Sauf autorisation écrite expresse de l’auteur, il est strictement interdit de :
+
+Copier, distribuer ou publier tout ou partie du logiciel, sous quelque forme que ce soit ;
+
+Modifier, désassembler, décompiler ou créer des œuvres dérivées à partir du logiciel ;
+
+Réutiliser tout ou partie du code, des scripts ou de la logique interne de Piwi dans un autre projet ;
+
+Revendre, louer, prêter ou exploiter commercialement Piwi sans autorisation écrite préalable.
+
+
+Article 3 – Usage autorisé
+
+L’utilisation du logiciel est limitée à des fins personnelles, de test ou d’évaluation.
+Toute utilisation professionnelle, de recherche, ou intégrée dans un produit ou service distribué à des tiers nécessite un accord de licence commercial spécifique conclu avec l’auteur.
+
+Article 4 – Responsabilité
+
+Le logiciel est fourni “tel quel”, sans garantie d’aucune sorte, explicite ou implicite.
+L’auteur ne saurait être tenu responsable de tout dommage, perte de données, ou incident direct ou indirect résultant de son utilisation.
+
+Article 5 – Protection juridique
+
+Toute reproduction, diffusion ou utilisation non autorisée du logiciel, en tout ou partie, est passible de poursuites conformément aux articles L335-2 et suivants du Code de la propriété intellectuelle.
+
+
+---
+
+🧾 End User License Agreement – Piwi
+
+© 2025 Victor DUPREZ / PiwiSoft
+All rights reserved.
+(English translation for international understanding)
+
+Article 1 – Purpose
+
+The software Piwi and all its components (source code, graphical interface, scripts, documentation, visual assets, logos, and icons) are the exclusive property of its author, Victor DUPREZ.
+
+Article 2 – Prohibited Actions
+
+Without prior written authorization from the author, it is strictly forbidden to:
+
+Copy, distribute, or publish all or part of the software in any form;
+
+Modify, disassemble, decompile, or create derivative works based on the software;
+
+Reuse any portion of the code, scripts, or internal logic of Piwi in another project;
+
+Resell, rent, lend, or commercially exploit Piwi without written authorization.
+
+
+Article 3 – Authorized Use
+
+The use of the software is limited to personal, testing, or evaluation purposes only.
+Any professional, research, or third-party distributed use requires a specific commercial license agreement with the author.
+
+Article 4 – Disclaimer
+
+The software is provided “as is”, without any warranty of any kind, express or implied.
+The author shall not be held liable for any damage, data loss, or indirect consequences resulting from its use.
+
+Article 5 – Legal Protection
+
+Any unauthorized reproduction, distribution, or use of the software, in whole or in part, may result in legal action under the provisions of Articles L335-2 and following of the French Intellectual Property Code.
+
+
+---
+
+⚠️ TL;DR (Summary for GitHub)
+
+You cannot copy, modify, distribute, or reuse Piwi — its code, interface, or assets — without explicit written authorization from Victor DUPREZ / PiwiSoft.
+Commercial or research use is strictly prohibited unless a separate license agreement is signed.
+Piwi is a closed-source proprietary software, not open-source
